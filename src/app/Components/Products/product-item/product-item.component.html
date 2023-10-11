@@ -1,0 +1,24 @@
+<div class="bg-light p-5 text-center">
+    <div class="container">
+        <h1 class="text-warning mb-4">Products</h1>
+        <div class="row">
+            <div class="card-group">
+                <div *ngFor="let product of products" class="col-4">
+                    <div class="card">
+                        <img src= "{{ product.ImageURL }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ product.Name }}</h3>
+                            <h4>Price: {{ product.Name }}</h4>
+                            <h4>Quantity: {{ product.Qty }}</h4>
+                            <ng-container [ngSwitch]= "product.Qty">
+                                <button *ngSwitchCase="1" class="btn btn-outline-warning">Buy Now</button>
+                                <button *ngSwitchCase="0" class="btn btn-danger disabled">Sold Out</button>
+                                <button *ngSwitchDefault class="btn btn-outline-success">Buy Now</button>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

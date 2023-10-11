@@ -1,0 +1,49 @@
+<div class="bg-dark p-5 text-center">
+    <div class="container">
+        <h1 class="text-warning mb-4">Login</h1>
+        <div class="row justify-content-center ">
+            <div class="col-4">
+                <input
+                    #nameInput
+                    type="text"
+                    name="studentName"
+                    placeholder="Student Name"
+                    class="form-control mb-2"
+                    (change)="validateName($event.target)"
+                >
+                <span class="text-danger mb-3" [innerText]="nameErrors"></span>
+
+                <input
+                    #ageInput
+                    type="number"
+                    name="studentAge"
+                    placeholder="Student Age"
+                    class="form-control mb-2"
+                    (change)="validateAge($event.target)"
+                >
+                <span class="text-danger mb-3" [innerText]="ageErrors"></span>
+
+                <button class="btn btn-outline-success w-100" (click)="addStudent(nameInput, ageInput)">Login</button>
+
+                <table *ngIf="students.length > 0" class="table table-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let student of students; let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ student.Name }}</td>
+                            <td>{{ student.Age }}</td>
+                            <td><button class="btn btn-danger" (click)="delete(i)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
